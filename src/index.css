@@ -34,7 +34,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+/* ── Custom scrollbar ─────────────────────────────────────────────────────── */
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: rgba(52, 211, 153, 0.15) transparent;
@@ -57,51 +57,50 @@ body {
   background: rgba(52, 211, 153, 0.3);
 }
 
-/* Noise texture overlay for depth */
-.bg-noise {
-  position: relative;
-}
-
-.bg-noise::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  opacity: 0.4;
-  z-index: 0;
-}
-
-/* Animated glow pulse for unread indicator */
+/* ── Unread dot pulse ─────────────────────────────────────────────────────── */
 @keyframes pulse-glow {
   0%, 100% { opacity: 1; box-shadow: 0 0 4px #34d399; }
-  50% { opacity: 0.6; box-shadow: 0 0 8px #34d399; }
+  50%       { opacity: 0.6; box-shadow: 0 0 8px #34d399; }
 }
 
 .unread-dot {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Slide-in animation for message detail panel */
+/* ── Message detail slide-in ─────────────────────────────────────────────── */
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 .slide-in {
   animation: slideIn 0.2s ease-out forwards;
 }
 
-/* Login card shine */
+/* ── Delete confirmation modal entrance ──────────────────────────────────── */
+/*
+   Spring-like pop: starts small + slightly below, bounces to natural size.
+   cubic-bezier(0.34, 1.56, 0.64, 1) gives a subtle overshoot (spring feel).
+*/
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal {
+  animation: modalIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ── Login button shimmer ────────────────────────────────────────────────── */
 @keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
 }
 
 .shimmer-btn {
@@ -121,7 +120,7 @@ body {
   animation: shimmer 1.5s linear infinite;
 }
 
-/* Line clamp utility */
+/* ── Line clamp utility ──────────────────────────────────────────────────── */
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -129,15 +128,9 @@ body {
   overflow: hidden;
 }
 
-/* Responsive: mobile sidebar overlay */
-@media (max-width: 768px) {
-  .mobile-sidebar-open {
-    transform: translateX(0) !important;
-  }
-}
-
-/* Focus styles */
-input:focus, button:focus-visible {
+/* ── Focus styles ────────────────────────────────────────────────────────── */
+input:focus,
+button:focus-visible {
   outline: 2px solid rgba(52, 211, 153, 0.5);
   outline-offset: 2px;
 }
