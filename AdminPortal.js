@@ -15,13 +15,15 @@ import { format } from 'date-fns';
 
 // --- FIREBASE CONFIG ---
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyB441kQiyA0gQqn0SYzTyZRFGdV9yApr3w",
+  authDomain: "adminportal-aa5be.firebaseapp.com",
+  projectId: "adminportal-aa5be",
+  storageBucket: "adminportal-aa5be.firebasestorage.app",
+  messagingSenderId: "305884449303",
+  appId: "1:305884449303:web:ab736564654f733bda2a52",
+  measurementId: "G-DWRC9ND9NP"
 };
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
